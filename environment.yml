@@ -1,0 +1,15 @@
+name: PPLM2
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9.17
+  - torchvision==0.14.1
+  - cudatoolkit=11.6.1
+  - torchaudio==0.13.1
+  - pytorch==1.13.1
+  - biopython=1.81
+  - pip=23.2.1
+  - pip:
+    - fair-esm==2.0.0
