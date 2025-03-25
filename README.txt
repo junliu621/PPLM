@@ -1,5 +1,3 @@
-# PPLM
-Protein-Protein Language Model with Novel Attention Mechanisms for Enhanced Inter-Protein Contact and Interaction Prediction
 
 ####################################################################################################
 
@@ -64,6 +62,17 @@ x86_64 machine, Linux kernel OS.
     (https://dl.fbaipublicfiles.com/fair-esm/models/esm_msa1_t12_100M_UR50S.pt)
 
 
+####################################### Download parameters ########################################
+1.  Download the PPLM parameter and place it in the "pplm/models" directory
+    (https://zhanglab.comp.nus.edu.sg/PPLM/bin/codes/pplm_parameters/pplm_t33_650M.pt)
+
+2.  Dowload and unzip the PPLM-Contact parameters into the "pplm_contact/models" directory
+    (https://zhanglab.comp.nus.edu.sg/PPLM/bin/codes/pplm-contact_parameters.zip)
+
+3.  Dowload and unzip the PPLM-PPI parameters into the "pplm_ppi/models" directory
+    (https://zhanglab.comp.nus.edu.sg/PPLM/bin/codes/pplm-ppi_parameters.zip)
+
+
 ############################################## Usage ###############################################
 1.  Install PPLM environment:
 	conda env create -f environment.yml
@@ -85,6 +94,7 @@ x86_64 machine, Linux kernel OS.
 
 6.  Run PPLM to generate embeddings and attention weights for other applications:
     python run_pplm.py example/seq1.fasta example/seq2.fasta example/seq1-seq2.pplm.pkl
+
 
 ########################################## Example Output ##########################################
 1.  Output of PPLM-Contact:
