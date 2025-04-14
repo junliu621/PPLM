@@ -8,9 +8,6 @@ class PPLM_PPI(nn.Module):
         self.linear_intra = nn.Linear(attn_dim, prev_dim)
         self.linear_inter = nn.Linear(attn_dim, prev_dim)
         self.linear_embed = nn.Linear(embed_dim, prev_dim)
-        self.linear_intra_max = nn.Linear(prev_dim, prev_dim)
-        self.linear_inter_max = nn.Linear(prev_dim, prev_dim)
-        self.linear_embed_max = nn.Linear(embed_dim, prev_dim)
 
         layers = []
         layers.append(nn.Linear(prev_dim * 10, 1024))
