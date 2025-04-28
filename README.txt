@@ -1,4 +1,3 @@
-
 ####################################################################################################
 
                                   _____   _____   _       __  __
@@ -13,16 +12,18 @@
 
 (Copyrighted by the Regents of the National University of Singapore, All rights reserved)
 
-PPLM is a specialized protein-protein language model designed for predicting protein-protein
-contacts and interactions.
+PPLM is a protein–protein language model that learns directly from paired sequences through a novel
+attention architecture, explicitly capturing inter-protein context. Building on PPLM, we developed
+PPLM-PPI, PPLM-Affinity, and PPLM-Contact for predicting protein–protein interactions, estimating
+binding affinity, and identifying interface residue contacts, respectively.
 
 Author: Jun Liu
 
 For bug reports and inquiries, please contact: junl_sg@nus.edu.sg
 
 If you use this program, please cite:
-Jun Liu, Hungyu Chen, Yang Zhang. Protein-Protein Language Model with Novel Attention Mechanisms
-for Enhanced Inter-Protein Contact and Interaction Prediction. In preparation.
+Jun Liu, Hungyu Chen, Yang Zhang. A Protein-Protein Language Model for Interaction, Binding Affinity,
+and Interface Contact Prediction. In preparation.
 
 This is the stand-alone program. Alternatively, users can submit jobs online at:
 https://zhanglab.comp.nus.edu.sg/PPLM/
@@ -36,7 +37,7 @@ Noncommercial License
 ####################################### System Requirements ########################################
 x86_64 machine, Linux kernel OS.
 
-################################# Software & Dataset Requirements ##################################
+######################### Software & Dataset Requirements for PPLM-Contact #########################
 1.  HH-suite3 for MSA Search.
     Install HH-suite3 (https://github.com/soedinglab/hh-suite) and set the "hhsuite_dir" parameter
     in the "pplm_contact/config.py" file.
@@ -62,17 +63,6 @@ x86_64 machine, Linux kernel OS.
     (https://dl.fbaipublicfiles.com/fair-esm/models/esm_msa1_t12_100M_UR50S.pt)
 
 
-####################################### Download parameters ########################################
-1.  Download the PPLM parameter and place it in the "pplm/models" directory
-    (https://zhanglab.comp.nus.edu.sg/PPLM/bin/codes/pplm_parameters/pplm_t33_650M.pt)
-
-2.  Dowload and unzip the PPLM-Contact parameters into the "pplm_contact/models" directory
-    (https://zhanglab.comp.nus.edu.sg/PPLM/bin/codes/pplm-contact_parameters.zip)
-
-3.  Dowload and unzip the PPLM-PPI parameters into the "pplm_ppi/models" directory
-    (https://zhanglab.comp.nus.edu.sg/PPLM/bin/codes/pplm-ppi_parameters.zip)
-
-
 ############################################## Usage ###############################################
 1.  Install PPLM environment:
 	conda env create -f environment.yml
@@ -80,47 +70,26 @@ x86_64 machine, Linux kernel OS.
 2.  Activate PPLM environment:
     conda activate PPLM
 
-3.  Run PPLM-Contact for protein homodimer:
+3.  Run PPLM-PPI for a batch of paired sequences:
+    python run_pplm-ppi.py example/seq_pairs.fasta example/seq_pairs.results
+
+4.  Run PPLM-Affinity for receptor and ligand sequences:
+    python run_pplm-contact.py example/receptor.fasta example/ligand.fasta
+
+5.  Run PPLM-Contact for protein homodimer:
     python run_pplm-contact.py example/protein.pdb example/protein.pdb example/homo_example
 
-4.  Run PPLM-Contact for protein heterodimer:
+6.  Run PPLM-Contact for protein heterodimer:
     python run_pplm-contact.py example/protein1.pdb example/protein2.pdb example/hetero_example
-
-5.  Run PPLM-PPI for a batch of paired sequences:
-    python run_pplm-ppi.py example/seq_pairs.fasta example/seq_pairs.results
 
     You can also run PPLM-PPI for two individual sequences:
     python pplm_ppi/predict.py example/seq1.fasta example/seq2.fasta
 
-6.  Run PPLM to generate embeddings and attention weights for other applications:
+7.  Run PPLM to generate embeddings and attention weights for other applications:
     python run_pplm.py example/seq1.fasta example/seq2.fasta example/seq1-seq2.pplm.pkl
 
-
 ########################################## Example Output ##########################################
-1.  Output of PPLM-Contact:
-    (a) Run PPLM-Contact:
-        python run_pplm-contact.py example/protein.pdb example/protein.pdb example/homo_example
-
-    (b) The predicted contacts are saved in example/homo_example/homo_example.pred_contact.txt.
-        The file is structured as follows:
-        Rank      ResIdx1   ResType1  ResIdx2   ResType2  Contact_Probability
-        1         23:A      MET       26:B      CYS       0.976151
-        2         26:A      CYS       23:B      MET       0.974481
-        3         22:A      ILE       26:B      CYS       0.971633
-        4         23:A      MET       30:B      GLN       0.971191
-        5         30:A      GLN       22:B      ILE       0.970514
-        6         27:A      GLY       23:B      MET       0.970334
-        7         22:A      ILE       30:B      GLN       0.970124
-        8         30:A      GLN       23:B      MET       0.96919
-        9         23:A      MET       27:B      GLY       0.966725
-        10        23:A      MET       23:B      MET       0.966512
-        ...
-
-        • ResIdx1 and ResIdx2: Residue indexes of first (A) and second (B) proteins, respectively.
-        • ResTyep1 and ResType2: Amino acid types corresponding to ResIdx1 and ResIdx2.
-        • Contact_Probability: The predicted probability of residue contact.
-
-2.  Output of PPLM-PPI:
+1.  Output of PPLM-PPI:
     (a) Run PPLM-PPI:
         python run_pplm-ppi.py example/seq_pairs.fasta example/seq_pairs.results
 
@@ -143,5 +112,35 @@ x86_64 machine, Linux kernel OS.
         Each entry consists of:
         • Protein Pair: Represented in the format >Protein1:Protein2.
         • Interaction Probability: The likelihood of interaction between the given protein pair.
+
+2.  Output of PPLM-Affinity:
+    (a) Run PPLM-PPI:
+        python run_pplm-ppi.py example/receptor.fasta example/ligand.fasta
+
+    (b) The predicted binding affinity will be directly printed to the command line.
+        Predicted binding affinity: -7.6090136
+
+3.  Output of PPLM-Contact:
+    (a) Run PPLM-Contact:
+        python run_pplm-contact.py example/protein.pdb example/protein.pdb example/homo_example
+
+    (b) The predicted contacts are saved in example/homo_example/homo_example.pred_contact.txt.
+        The file is structured as follows:
+        Rank      ResIdx1   ResType1  ResIdx2   ResType2  Contact_Probability
+        1         23:A      MET       26:B      CYS       0.976151
+        2         26:A      CYS       23:B      MET       0.974481
+        3         22:A      ILE       26:B      CYS       0.971633
+        4         23:A      MET       30:B      GLN       0.971191
+        5         30:A      GLN       22:B      ILE       0.970514
+        6         27:A      GLY       23:B      MET       0.970334
+        7         22:A      ILE       30:B      GLN       0.970124
+        8         30:A      GLN       23:B      MET       0.96919
+        9         23:A      MET       27:B      GLY       0.966725
+        10        23:A      MET       23:B      MET       0.966512
+        ...
+
+        • ResIdx1 and ResIdx2: Residue indexes of first (A) and second (B) proteins, respectively.
+        • ResTyep1 and ResType2: Amino acid types corresponding to ResIdx1 and ResIdx2.
+        • Contact_Probability: The predicted probability of residue contact.
 
 ####################################################################################################
