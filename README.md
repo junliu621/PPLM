@@ -63,7 +63,7 @@ python run_pplm-contact.py example/protein.pdb example/protein.pdb example/homo_
 ```bash
 python run_pplm-contact.py example/protein1.pdb example/protein2.pdb example/hetero_example
 ```
-### 7. Generate embeddings and attention weights
+### 7. Generate embeddings and attention weights for other applications
 ```bash
 python run_pplm.py example/seq1.fasta example/seq2.fasta example/seq1-seq2.pplm.pkl
 ```
