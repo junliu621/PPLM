@@ -1,6 +1,5 @@
 
-# PPLM: A Protein-Protein Language Model for Interaction, Binding Affinity, and Interface Contact Prediction![image](https://github.com/user-attachments/assets/e4d984fa-d623-4a9b-ac28-d78f758c1ce1)
-
+# PPLM: A Protein-Protein Language Model for Interaction, Binding Affinity, and Interface Contact Prediction
 
 ![PPLM Banner](https://zhanglab.comp.nus.edu.sg/PPLM/img/ppplm_logo.png)
 
