@@ -1,7 +1,7 @@
 
 # PPLM
 
-![PPLM Banner]([https://via.placeholder.com/1200x200?text=PPLM](https://zhanglab.comp.nus.edu.sg/PPLM/img/pipeline.png)) <!-- 可以换成真实Banner -->
+![PPLM Banner]([[https://via.placeholder.com/1200x200?text=PPLM](https://zhanglab.comp.nus.edu.sg/PPLM/img/pipeline.png)](https://zhanglab.comp.nus.edu.sg/PPLM/img/pipeline.png)) <!-- 可以换成真实Banner -->
 
 ---
 
