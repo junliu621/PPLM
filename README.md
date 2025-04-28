@@ -37,6 +37,11 @@ binding affinity, and identifying interface residue contacts, respectively.
 4. **LoadHHM** for PSSM Calculation: [LoadHHM.py](https://github.com/j3xugit/RaptorX-Contact/blob/master/Common/LoadHHM.py)
 5. **ESM-MSA** for Feature Generation: [Install ESM](https://github.com/facebookresearch/esm)
 
+## Download parameters
+- Run the download_parameter.sh script located in the models/ folder of pplm/, pplm_ppi/, pplm_affinity/, and pplm_contact/
+
+---
+
 ## Usage
 
 ### 1. Install environment
