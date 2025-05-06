@@ -1,5 +1,5 @@
 #!/bin/bash
 
-wget https://zhanglab.comp.nus.edu.sg/PPLM/bin/codes/pplm-contact_parameters.zip
+wget https://zhanggroup.org/PPLM/bin/codes/pplm-contact_parameters.zip
 
 unzip pplm-contact_parameters.zip
