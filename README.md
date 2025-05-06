@@ -20,7 +20,7 @@ binding affinity, and identifying interface residue contacts, respectively.
 **Citation**:  
 > Jun Liu, Hungyu Chen, Yang Zhang. A Protein-Protein Language Model for Interaction, Binding Affinity, and Interface Contact Prediction. *In preparation.*
 
-**Webserver**: [PPLM Online Submission](https://zhanglab.comp.nus.edu.sg/PPLM/)  
+**Webserver**: [PPLM Online Submission](https://zhanggroup.org/PPLM/)  
 
 **License**: PolyForm Noncommercial License
 
