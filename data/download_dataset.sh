@@ -5,8 +5,11 @@
 # Download PPLM dataset
 wget https://zhanggroup.org/PPLM/bin/datasets/PPLM_Dataset.tar.gz
 
+# Download PPLM-PPI dataset
+wget https://zhanggroup.org/PPLM/bin/datasets/PPLM-PPI_Dataset.tar.gz
+
 # Download PPLM-Contact dataset
 wget https://zhanggroup.org/PPLM/bin/datasets/PPLM-Contact_Dataset.tar.gz
 
-# Download PPLM-PPI dataset
-wget https://zhanggroup.org/PPLM/bin/datasets/PPLM-PPI_Dataset.tar.gz
+# Access the dataset used in PPLM-Affinity
+https://github.com/ChenPy00/PPB-Affinity
