@@ -89,7 +89,7 @@ def main():
 
 
 def get_pplm_features(seqA, seqB, device):
-    mian_path = os.path.dirname(__file__) + "/../"
+    mian_path = os.path.dirname(__file__)
     sys.path.append(os.path.abspath(mian_path))
 
     from pplm import PPLM, Alphabet
