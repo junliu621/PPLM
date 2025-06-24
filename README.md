@@ -38,8 +38,19 @@ binding affinity, and identifying interface residue contacts, respectively.
 5. **ESM-MSA** for Feature Generation: [Install ESM](https://github.com/facebookresearch/esm)
 
 ## Download parameters
-- Run the download_parameter.sh script located in the models/ folder of pplm/, pplm_ppi/, pplm_affinity/, and pplm_contact/
-
+Run the download_parameter.sh script located in the models/ folder of pplm/, pplm_ppi/, pplm_affinity/, and pplm_contact/
+```bash
+cd pplm/models/ && bash download_model.sh
+```
+```bash
+cd pplm_ppi/models/ && bash download_model.sh
+```
+```bash
+cd pplm_affinity/models/ && bash download_model.sh 
+```
+```bash
+cd pplm_contact/models/ && bash download_model.sh
+```
 ---
 
 ## Usage
