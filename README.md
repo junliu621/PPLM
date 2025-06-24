@@ -67,6 +67,10 @@ conda activate PPLM
 ```bash
 python run_pplm-ppi.py example/seq_pairs.fasta example/seq_pairs.results
 ```
+You can also run PPLM-PPI for two individual sequences:
+```bash
+python pplm_ppi/predict.py example/seq1.fasta example/seq2.fasta
+```
 ### 4. Run PPLM-Affinity
 ```bash
 python run_pplm-affinity.py example/receptor.fasta example/ligand.fasta
