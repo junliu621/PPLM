@@ -1,4 +1,4 @@
-name: PPLM2
+name: PPLM
 channels:
   - pytorch
   - conda-forge
