@@ -75,13 +75,23 @@ python pplm_ppi/predict.py example/seq1.fasta example/seq2.fasta
 ```bash
 python run_pplm-affinity.py example/receptor.fasta example/ligand.fasta
 ```
-### 5. Run PPLM-Contact (homodimer)
+### 5. Run PPLM-Contact
+For homodimer
 ```bash
 python run_pplm-contact.py example/protein.pdb example/protein.pdb example/homo_example
 ```
-### 6. Run PPLM-Contact (heterodimer)
+For heterodimer
 ```bash
 python run_pplm-contact.py example/protein1.pdb example/protein2.pdb example/hetero_example
+```
+### 5. Run PPLM-Contact2
+For homodimer
+```bash
+python run_pplm-contact2.py example/homodimer.afm.pdb example/homodimer.af3.pdb example/homodimer.dmf.pdb example/homo_example2
+```
+For heterodimer
+```bash
+python run_pplm-contact2.py example/heterodimer.afm.pdb example/heterodimer.af3.pdb example/heterodimer.dmf.pdb example/hetero_example2
 ```
 ### 7. Generate embeddings and attention weights for other applications
 ```bash
