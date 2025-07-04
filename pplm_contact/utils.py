@@ -100,6 +100,165 @@ def extract_seq_and_dist_map(pdb_path, seq_path, dist_path):
 
     return res_idx_type
 
+def extract_seq_and_dist_map_dimer(pdb_path, seqA_path, seqB_path, chain_A_dist_path, chain_B_dist_path, inter_chain_dist_path):
+    ### Load pdb_chain ###
+    chiains_data = {'pdb_res_coordis': [], 'res_idx_type': [], 'sequence': []}
+    pdb_res_coordis = []
+    res_atom_coordis = {}
+    res_idx_type = []
+    sequence = ''
+    last_res_idx = -1
+    last_res_name = ''
+    last_chain_id = ''
+    for data in open(pdb_path, 'r').readlines():
+        if data.startswith("ATOM"):
+            atom_name = data[13:16].strip()
+            res_name = data[17:20].strip()
+            chain_id = data[21].strip()
+            res_idx = int(data[22:26].strip())
+            coordi_x = float(data[30:38].strip())
+            coordi_y = float(data[38:46].strip())
+            coordi_z = float(data[46:54].strip())
+
+            if last_chain_id != '' and last_chain_id != chain_id:
+                if last_res_idx != -1 and res_idx != last_res_idx:
+                    pdb_res_coordis.append(res_atom_coordis)
+                    res_atom_coordis = {}
+                    sequence += restype_3to1[last_res_name]
+                    res_idx_type.append([last_res_idx, last_res_name])
+
+                chiains_data['pdb_res_coordis'].append(pdb_res_coordis)
+                chiains_data['res_idx_type'].append(res_idx_type)
+                chiains_data['sequence'].append(sequence)
+
+                pdb_res_coordis = []
+                res_atom_coordis = {}
+                res_idx_type = []
+                sequence = ''
+                last_res_idx = -1
+                last_res_name = ''
+
+            if last_res_idx != -1 and res_idx != last_res_idx:
+                pdb_res_coordis.append(res_atom_coordis)
+                res_atom_coordis = {}
+                sequence += restype_3to1[last_res_name]
+                res_idx_type.append([last_res_idx, last_res_name])
+            res_atom_coordis[atom_name] = [coordi_x, coordi_y, coordi_z]
+            last_res_idx = res_idx
+            last_res_name = res_name
+            last_chain_id = chain_id
+
+    if len(res_atom_coordis) != 0:
+        pdb_res_coordis.append(res_atom_coordis)
+        res_atom_coordis = {}
+        sequence += restype_3to1[last_res_name]
+        res_idx_type.append([last_res_idx, last_res_name])
+
+        chiains_data['pdb_res_coordis'].append(pdb_res_coordis)
+        chiains_data['res_idx_type'].append(res_idx_type)
+        chiains_data['sequence'].append(sequence)
+
+    # print("chiains_data:", len(chiains_data['pdb_res_coordis']), len(chiains_data['res_idx_type']), len(chiains_data['sequence']))
+
+    if len(chiains_data['pdb_res_coordis']) < 2:
+        print("Error:", pdb_path, "has less than 2 chains!!!")
+        exit()
+    elif len(chiains_data['pdb_res_coordis']) > 2:
+        print("Warning:", pdb_path, "has more than 2 chains, only the first two are considered!!!")
+
+
+    ################## Get the coordinates, residue type, and sequence of the first two chians ##################
+    pdbA_res_coordis = chiains_data['pdb_res_coordis'][0]
+    pdbA_res_idx_type = chiains_data['res_idx_type'][0]
+    pdbA_sequence = chiains_data['sequence'][0]
+
+    pdbB_res_coordis = chiains_data['pdb_res_coordis'][1]
+    pdbB_res_idx_type = chiains_data['res_idx_type'][1]
+    pdbB_sequence = chiains_data['sequence'][1]
+
+    ############## extract distance map of chain A ##################
+    len_A = len(pdbA_res_coordis)
+    chainA_dist_map = np.ones((1, len_A, len_A)) * np.inf
+    for i in range(len_A):
+        for j in range(i, len_A):
+            min_dist = np.inf
+            for heay_i in heavy_atoms:
+                if heay_i in pdbA_res_coordis[i]:
+                    coordi_1 = pdbA_res_coordis[i][heay_i]
+                else:
+                    continue
+                for heay_j in heavy_atoms:
+                    if heay_j in pdbA_res_coordis[j]:
+                        coordi_2 = pdbA_res_coordis[j][heay_j]
+                    else:
+                        continue
+                    dist = np.sqrt(pow(coordi_1[0] - coordi_2[0], 2) + pow(coordi_1[1] - coordi_2[1], 2) + pow(coordi_1[2] - coordi_2[2], 2))
+                    if dist < min_dist:
+                        min_dist = dist
+            chainA_dist_map[0, i, j] = min_dist
+            chainA_dist_map[0, j, i] = min_dist
+
+    with open(chain_A_dist_path, mode='wb') as fw:
+        pickle.dump(chainA_dist_map, fw)
+
+    with open(seqA_path, 'w') as fw:
+        fw.write(">seqA " + str(len_A) + "\n")
+        fw.write(pdbA_sequence + "\n")
+
+    ############## extract distance map of chain B ##################
+    len_B = len(pdbB_res_coordis)
+    chainB_dist_map = np.ones((1, len_B, len_B)) * np.inf
+    for i in range(len_B):
+        for j in range(i, len_B):
+            min_dist = np.inf
+            for heay_i in heavy_atoms:
+                if heay_i in pdbB_res_coordis[i]:
+                    coordi_1 = pdbB_res_coordis[i][heay_i]
+                else:
+                    continue
+                for heay_j in heavy_atoms:
+                    if heay_j in pdbB_res_coordis[j]:
+                        coordi_2 = pdbB_res_coordis[j][heay_j]
+                    else:
+                        continue
+                    dist = np.sqrt(pow(coordi_1[0] - coordi_2[0], 2) + pow(coordi_1[1] - coordi_2[1], 2) + pow(coordi_1[2] - coordi_2[2], 2))
+                    if dist < min_dist:
+                        min_dist = dist
+            chainB_dist_map[0, i, j] = min_dist
+            chainB_dist_map[0, j, i] = min_dist
+
+    with open(chain_B_dist_path, mode='wb') as fw:
+        pickle.dump(chainB_dist_map, fw)
+
+    with open(seqB_path, 'w') as fw:
+        fw.write(">seqA " + str(len_B) + "\n")
+        fw.write(pdbB_sequence + "\n")
+
+    ############## extract inter-chain distance map of chain A and B ##################
+    inter_chain_dist_map = np.ones((1, len_A, len_B)) * np.inf
+    for i in range(len_A):
+        for j in range(len_B):
+            min_dist = np.inf
+            for heay_i in heavy_atoms:
+                if heay_i in pdbA_res_coordis[i]:
+                    coordi_1 = pdbA_res_coordis[i][heay_i]
+                else:
+                    continue
+                for heay_j in heavy_atoms:
+                    if heay_j in pdbB_res_coordis[j]:
+                        coordi_2 = pdbB_res_coordis[j][heay_j]
+                    else:
+                        continue
+                    dist = np.sqrt(pow(coordi_1[0] - coordi_2[0], 2) + pow(coordi_1[1] - coordi_2[1], 2) + pow(coordi_1[2] - coordi_2[2], 2))
+                    if dist < min_dist:
+                        min_dist = dist
+            inter_chain_dist_map[0, i, j] = min_dist
+
+    with open(inter_chain_dist_path, mode='wb') as fw:
+        pickle.dump(inter_chain_dist_map, fw)
+
+    return pdbA_sequence, pdbA_res_idx_type, pdbB_sequence, pdbB_res_idx_type
+
 def pairing_msa(msa1_path, msa2_path, paired_msa_path):
     msas1, sid1 = extract_taxid(msa1_path)
     msas2, sid2 = extract_taxid(msa2_path)
