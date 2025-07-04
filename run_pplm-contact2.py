@@ -218,7 +218,7 @@ def extract_MSA_features(name, msa, hhm, aln, dci_di, dci_apc, esm_msa_path):
         subprocess.run(["python", esm_msa, esm_msa_model, msa + "_filtered", esm_msa_path])
 
 def get_pplm_features(seqA_path, seqB_path, out_pkl_path, device='cpu'):
-    mian_path = os.path.dirname(__file__) + "/../"
+    mian_path = os.path.dirname(__file__)
     sys.path.append(os.path.abspath(mian_path))
 
     from pplm import PPLM, Alphabet
