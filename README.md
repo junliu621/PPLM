@@ -84,7 +84,7 @@ For heterodimer
 ```bash
 python run_pplm-contact.py example/protein1.pdb example/protein2.pdb example/hetero_example
 ```
-### 5. Run PPLM-Contact2
+### 6. Run PPLM-Contact2
 For homodimer
 ```bash
 python run_pplm-contact2.py example/homodimer.afm.pdb example/homodimer.af3.pdb example/homodimer.dmf.pdb example/homo_example2
