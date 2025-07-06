@@ -33,7 +33,7 @@ binding affinity, and identifying interface residue contacts, respectively.
 ## Software & Dataset Requirements (for PPLM-Contact)
 1. **HH-suite3** for MSA Search: Install [HH-suite3](https://github.com/soedinglab/hh-suite) and set the "hhsuite_dir" parameter in the "pplm_contact/config.py" file.
 2. **Uniclust Database**: Download the [Uniclust30 database](http://wwwuser.gwdg.de/~compbiol/uniclust/2021_03/) and set the "UniRef_database" parameter in the "config.py" file.
-3. **CCMpred** for DCA: Install [ccmpred](https://github.com/soedinglab/CCMpred), or use the pre-packaged version in the "pplm_contact/external_tools" directory. Set the "ccmpred" parameter in the "config.py" file. You may need to grant permission by running 'chmod +x /pplm_contact/external_tools/ccmpred'.
+3. **CCMpred** for DCA: Install [ccmpred](https://github.com/soedinglab/CCMpred), or use the pre-packaged version in the "pplm_contact/external_tools" directory. Set the "ccmpred" parameter in the "config.py" file. You may need to grant permission by running 'chmod +x pplm_contact/external_tools/ccmpred'.
 4. **LoadHHM** for PSSM Calculation: Download [LoadHHM.py](https://github.com/j3xugit/RaptorX-Contact/blob/master/Common/LoadHHM.py) and place the file in the "pplm_contact" directory of the PPLM package, or use the pre-packaged version within the "pplm_contact" directory.
 5. **ESM-MSA** for Feature Generation: Install the [ESM package](https://github.com/facebookresearch/esm), or use the pre-packaged version within "pplm_contact/external_tools" directory. Download the pre-trained [ESM-MSA model](https://dl.fbaipublicfiles.com/fair-esm/models/esm_msa1_t12_100M_UR50S.pt) and set the "esm_msa_model" parameter in the "config.py" file. 
 
