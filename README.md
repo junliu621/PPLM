@@ -17,12 +17,12 @@ binding affinity, and identifying interface residue contacts, respectively.
 
 **Contact**: junl_sg@nus.edu.sg
 
-**Citation**:  
-> Liu, Jun, Hungyu Chen, and Yang Zhang. "A Corporative Language Model for Protein–Protein Interaction, Binding Affinity, and Interface Contact Prediction." bioRxiv (2025): 2025-07. [link](https://www.biorxiv.org/content/10.1101/2025.07.07.663595v1)
+**License**: PolyForm Noncommercial License
 
 **Webserver**: [PPLM Online Submission](https://zhanggroup.org/PPLM/)  
 
-**License**: PolyForm Noncommercial License
+**Citation**:  
+Liu, Jun, Hungyu Chen, and Yang Zhang. "A Corporative Language Model for Protein–Protein Interaction, Binding Affinity, and Interface Contact Prediction." bioRxiv (2025): 2025-07. [link](https://www.biorxiv.org/content/10.1101/2025.07.07.663595v1)
 
 ---
 
