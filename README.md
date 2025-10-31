@@ -38,11 +38,11 @@ binding affinity, and identifying interface residue contacts, respectively.
 5. **ESM-MSA** for Feature Generation: Install the [ESM package](https://github.com/facebookresearch/esm), or use the pre-packaged version within "pplm_contact/external_tools" directory. Download the pre-trained [ESM-MSA model](https://dl.fbaipublicfiles.com/fair-esm/models/esm_msa1_t12_100M_UR50S.pt) and set the "esm_msa_model" parameter in the "config.py" file. 
 
 ## Download parameters
-You can download the pre-trained parameters of PPLM and its downstream models from the following link:
-PPLM: [pplm_t33_650M.pt](https://1drv.ms/u/c/757b084e424e6c3f/EfSQ1FfvUFNInoQ52uCDFM8B74t3NKMZpSFeGjPLwJlqWA?e=XktDrg)
-PPLM-PPI: [pplm-ppi_parameters.zip](https://1drv.ms/u/c/757b084e424e6c3f/EVyGul5qevZLpKhwgA7yLyUBOy-Wj8mGVmQKlGs0vviLhQ?e=MceTXU)
-PPLM-Affinity: [pplm-affinity_parameters.zip](https://drive.google.com/file/d/19dB6-3UFoDW9Lz_Kmxk5gdHgAdvYTzyg/view?usp=drive_link)
-PPLM-Contact: [pplm-contact_parameters.zip](https://onedrive.live.com/?id=%2Fpersonal%2F757b084e424e6c3f%2FDocuments%2FPPLM%2Fpplm%2Dcontact%5Fparameters%2Ezip&parent=%2Fpersonal%2F757b084e424e6c3f%2FDocuments%2FPPLM)
+You can download the pre-trained parameters of PPLM and its downstream models from the following link:<br>
+1. **PPLM**: [pplm_t33_650M.pt](https://1drv.ms/u/c/757b084e424e6c3f/EfSQ1FfvUFNInoQ52uCDFM8B74t3NKMZpSFeGjPLwJlqWA?e=XktDrg)<br>
+2. **PPLM-PPI**: [pplm-ppi_parameters.zip](https://1drv.ms/u/c/757b084e424e6c3f/EVyGul5qevZLpKhwgA7yLyUBOy-Wj8mGVmQKlGs0vviLhQ?e=MceTXU)<br>
+3. **PPLM-Affinity**: [pplm-affinity_parameters.zip](https://drive.google.com/file/d/19dB6-3UFoDW9Lz_Kmxk5gdHgAdvYTzyg/view?usp=drive_link)<br>
+4. **PLM-Contact**: [pplm-contact_parameters.zip](https://onedrive.live.com/?id=%2Fpersonal%2F757b084e424e6c3f%2FDocuments%2FPPLM%2Fpplm%2Dcontact%5Fparameters%2Ezip&parent=%2Fpersonal%2F757b084e424e6c3f%2FDocuments%2FPPLM)<br>
 Please move the downloaded parameters to the models/ folder of pplm/, pplm_ppi/, pplm_affinity/, and pplm_contact/ 
 
 <!--
