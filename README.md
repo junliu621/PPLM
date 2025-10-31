@@ -43,6 +43,7 @@ You can download the pre-trained parameters of PPLM and its downstream models fr
 2. **PPLM-PPI**: [pplm-ppi_parameters.zip](https://1drv.ms/u/c/757b084e424e6c3f/EVyGul5qevZLpKhwgA7yLyUBOy-Wj8mGVmQKlGs0vviLhQ?e=MceTXU)<br>
 3. **PPLM-Affinity**: [pplm-affinity_parameters.zip](https://drive.google.com/file/d/19dB6-3UFoDW9Lz_Kmxk5gdHgAdvYTzyg/view?usp=drive_link)<br>
 4. **PLM-Contact**: [pplm-contact_parameters.zip](https://onedrive.live.com/?id=%2Fpersonal%2F757b084e424e6c3f%2FDocuments%2FPPLM%2Fpplm%2Dcontact%5Fparameters%2Ezip&parent=%2Fpersonal%2F757b084e424e6c3f%2FDocuments%2FPPLM)<br>
+
 Please move the downloaded parameters to the models/ folder of pplm/, pplm_ppi/, pplm_affinity/, and pplm_contact/ 
 
 <!--
