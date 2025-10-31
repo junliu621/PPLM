@@ -45,7 +45,7 @@ PPLM-Affinity: [pplm-affinity_parameters.zip](https://drive.google.com/file/d/19
 PPLM-Contact: [pplm-contact_parameters.zip](https://onedrive.live.com/?id=%2Fpersonal%2F757b084e424e6c3f%2FDocuments%2FPPLM%2Fpplm%2Dcontact%5Fparameters%2Ezip&parent=%2Fpersonal%2F757b084e424e6c3f%2FDocuments%2FPPLM)
 Please move the downloaded parameters to the models/ folder of pplm/, pplm_ppi/, pplm_affinity/, and pplm_contact/ 
 
-/*
+<!--
 Run the download_parameter.sh script located in the models/ folder of pplm/, pplm_ppi/, pplm_affinity/, and pplm_contact/
 ```bash
 cd pplm/models/ && bash download_model.sh
@@ -59,7 +59,7 @@ cd pplm_affinity/models/ && bash download_model.sh
 ```bash
 cd pplm_contact/models/ && bash download_model.sh
 ```
-*/
+-->
 ---
 
 ## Usage
