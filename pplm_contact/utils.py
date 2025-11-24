@@ -100,7 +100,7 @@ def extract_seq_and_dist_map(pdb_path, seq_path, dist_path):
 
     return res_idx_type
 
-def extract_seq_and_dist_map_dimer(pdb_path, seqA_path, seqB_path, chain_A_dist_path, chain_B_dist_path, inter_chain_dist_path):
+def extract_seq_and_dist_map_dimer(pdb_path):   #, seqA_path, seqB_path, chain_A_dist_path, chain_B_dist_path, inter_chain_dist_path):
     ### Load pdb_chain ###
     chiains_data = {'pdb_res_coordis': [], 'res_idx_type': [], 'sequence': []}
     pdb_res_coordis = []
@@ -198,13 +198,6 @@ def extract_seq_and_dist_map_dimer(pdb_path, seqA_path, seqB_path, chain_A_dist_
             chainA_dist_map[0, i, j] = min_dist
             chainA_dist_map[0, j, i] = min_dist
 
-    with open(chain_A_dist_path, mode='wb') as fw:
-        pickle.dump(chainA_dist_map, fw)
-
-    with open(seqA_path, 'w') as fw:
-        fw.write(">seqA " + str(len_A) + "\n")
-        fw.write(pdbA_sequence + "\n")
-
     ############## extract distance map of chain B ##################
     len_B = len(pdbB_res_coordis)
     chainB_dist_map = np.ones((1, len_B, len_B)) * np.inf
@@ -226,14 +219,7 @@ def extract_seq_and_dist_map_dimer(pdb_path, seqA_path, seqB_path, chain_A_dist_
                         min_dist = dist
             chainB_dist_map[0, i, j] = min_dist
             chainB_dist_map[0, j, i] = min_dist
-
-    with open(chain_B_dist_path, mode='wb') as fw:
-        pickle.dump(chainB_dist_map, fw)
-
-    with open(seqB_path, 'w') as fw:
-        fw.write(">seqA " + str(len_B) + "\n")
-        fw.write(pdbB_sequence + "\n")
-
+            
     ############## extract inter-chain distance map of chain A and B ##################
     inter_chain_dist_map = np.ones((1, len_A, len_B)) * np.inf
     for i in range(len_A):
@@ -254,10 +240,8 @@ def extract_seq_and_dist_map_dimer(pdb_path, seqA_path, seqB_path, chain_A_dist_
                         min_dist = dist
             inter_chain_dist_map[0, i, j] = min_dist
 
-    with open(inter_chain_dist_path, mode='wb') as fw:
-        pickle.dump(inter_chain_dist_map, fw)
+    return pdbA_sequence, pdbA_res_idx_type, chainA_dist_map, pdbB_sequence, pdbB_res_idx_type, chainB_dist_map, inter_chain_dist_map
 
-    return pdbA_sequence, pdbA_res_idx_type, pdbB_sequence, pdbB_res_idx_type
 
 def pairing_msa(msa1_path, msa2_path, paired_msa_path):
     msas1, sid1 = extract_taxid(msa1_path)
