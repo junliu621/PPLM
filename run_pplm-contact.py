@@ -11,11 +11,9 @@ from pplm_contact.utils import extract_seq_and_dist_map, pairing_msa, RBF
 from pplm_contact.LoadHHM import load_hmm
 from pplm_contact.config import *
 
-from pplm_contact import *
-# from pplm_contact import define_param, extract_seq_and_dist_map, pairing_msa, extract_MSA_features, get_pplm_features, collect_all_features, predict_contact
 def main():
     parser = argparse.ArgumentParser(description="Protein-Protein Contact Prediction",
-                                     epilog="v0.0.1")
+                                     epilog="v1.0.1")
 
     parser.add_argument("pdbA_path",
                         type=pathlib.Path,
@@ -132,6 +130,7 @@ def define_param(args):
 
     target1 = args.pdbA_path.stem
     target2 = args.pdbB_path.stem
+    print(target1, target2)
     target = str(args.output_folder).split('/')[-1]  # target1 + '-' + target2
     workspace = args.output_folder
     if not os.path.isdir(workspace):
@@ -199,7 +198,7 @@ def get_pplm_features(seqA_path, seqB_path, out_pkl_path, device='cpu'):
     sys.path.append(os.path.abspath(mian_path))
 
     from pplm import PPLM, Alphabet
-    model_location = os.path.join(mian_path, 'pplm/models/', 'pplm_t33_650M.pt')
+    model_location = os.path.join(mian_path, 'weights/pplm_t33_650M.pt')
 
     ##### Loading PPLM Model #####
     alphabet = Alphabet.from_architecture()
@@ -306,17 +305,23 @@ def collect_all_features():
         inter_2d = np.concatenate([inter_DCA_DI[:, :len1, len1:len1+len2], inter_DCA_APC[:, :len1, len1:len1+len2], inter_esm_msa_2d[:, :len1, len1:len1+len2], inter_pplm_attn], axis=0)
 
     feats = {"intra1_1d": intra1_1d, "intra1_2d": intra1_2d, "intra1_Mdist": intra1_Mdist, "intra2_1d": intra2_1d, "intra2_2d": intra2_2d, "intra2_Mdist": intra2_Mdist, "inter_2d": inter_2d}
+    print("features:", intra1_1d.shape, intra1_2d.shape, intra1_Mdist.shape, intra2_1d.shape, intra2_2d.shape, intra2_Mdist.shape, inter_2d.shape)
 
     return feats
 
 def predict_contact(feats, mode, device="cpu"):
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
+    # if mode == "homo":
+    #     model_paths = [os.path.join(script_dir, "pplm_contact/models/pplm_contact.homo_" + str(i) + ".pkl") for i in range(1, 6)]
+    # else:
+    #     model_paths = [os.path.join(script_dir, "pplm_contact/models/pplm_contact.hetero_" + str(i) + ".pkl") for i in range(1, 6)]
+    #
+    models_weight_ = torch.load(os.path.join(script_dir, "weights/pplm_contact_models.pkl"), map_location=device)
     if mode == "homo":
-        model_paths = [os.path.join(script_dir, "pplm_contact/models/pplm_contact.homo_" + str(i) + ".pkl") for i in range(1, 6)]
+        models_weight = models_weight_['homo']
     else:
-        model_paths = [os.path.join(script_dir, "pplm_contact/models/pplm_contact.hetero_" + str(i) + ".pkl") for i in range(1, 6)]
-
+        models_weight = models_weight_['hetero']
     model = PPLM_Contact()
     model.to(device)
 
@@ -330,14 +335,16 @@ def predict_contact(feats, mode, device="cpu"):
 
     ensemble_pred_inter_contact = []
     with torch.no_grad():
-        for model_path in model_paths:
-
-            checkpoint = torch.load(model_path, map_location=device)
-            model.load_state_dict(checkpoint["model_state_dict"])
+        for model_weight in models_weight:
+            # checkpoint = torch.load(model_path, map_location=device)
+            model.load_state_dict(model_weight)
             model.eval()
 
             #################################### Network predict #######################################
             contact_pred = model(intra1_1d, intra1_2d, intra2_1d, intra2_2d, inter_2d, intra1_Mdist, intra2_Mdist)
+            if mode == "hetero":
+                contact_pred_ = model(intra2_1d, intra2_2d, intra1_1d, intra1_2d, inter_2d.transpose(-1, -2), intra2_Mdist, intra1_Mdist)
+                contact_pred = (contact_pred + contact_pred_.transpose(-1, -2)) / 2
 
             pred_inter_contact = contact_pred  # [inter_contact_mask_ur]
             ensemble_pred_inter_contact.append(pred_inter_contact)
@@ -347,9 +354,6 @@ def predict_contact(feats, mode, device="cpu"):
 
     return pred_inter_contact
 
-
-
-
-
 if __name__ == "__main__":
     main()
+    
