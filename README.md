@@ -1,7 +1,7 @@
 
 # PPLM: A Corporative Language Model for Protein-Protein Interaction, Binding Affinity, and Interface Contact Prediction
 
-![PPLM Banner](https://zhanggroup.org/PPLM/img/pplm_pipeline.png)
+![PPLM Pipeline](Pipeline.png)
 
 ---
 
