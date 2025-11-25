@@ -104,7 +104,7 @@ For heterodimer
 ```bash
 python run_pplm-contact2.py example/heterodimer.afm.pdb example/heterodimer.af3.pdb example/heterodimer.dmf.pdb example/hetero_example2
 ```
-### 7. Generate embeddings and attention weights for other applications
+### 7. Generate embeddings and attention matrices for other applications
 ```bash
 python run_pplm.py example/seq1.fasta example/seq2.fasta example/seq1-seq2.pplm.pkl
 ```
