@@ -43,10 +43,10 @@ You can download the pre-trained weights for PPLM and its downstream models from
 2. **PPLM-PPI**: [pplm-ppi_weights](https://1drv.ms/u/c/757b084e424e6c3f/IQABdgnWpB0BTIQiXZecUvYhAerr1glZEZDc5blGnabV5kU?e=X1Pf6M)<br>
 3. **PPLM-Affinity**: [pplm-affinity_weights](https://drive.google.com/file/d/1teZBp3m_OQ4nciTmiepUDP8p9BXoVEwa/view?usp=drive_link)<br>
 4. **PLM-Contact**: [pplm-contact_weights](https://1drv.ms/u/c/757b084e424e6c3f/IQBW2Dp2AQNUTJHixTulJukoAU6NKjzEM6P64wnVxYQVJ2o?e=ftFZxe)<br>
-5. **PLM-Contact2**: [pplm-contactw_weights](https://1drv.ms/u/c/757b084e424e6c3f/IQD921oea9EXQqi3OdmFC04vAXlG_XSfho5FqupHmiX7nm4?e=jg0xgX)<br>
-
+5. **PLM-Contact2**: [pplm-contact2_weights](https://1drv.ms/u/c/757b084e424e6c3f/IQD921oea9EXQqi3OdmFC04vAXlG_XSfho5FqupHmiX7nm4?e=jg0xgX)<br>
+<!--
 After downloading, please move each parameters to the corresponding directory: models/ under pplm/, pplm_ppi/, pplm_affinity/, and pplm_contact/.
-
+-->
 <!--
 Run the download_parameter.sh script located in the models/ folder of pplm/, pplm_ppi/, pplm_affinity/, and pplm_contact/
 ```bash
