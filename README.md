@@ -169,3 +169,22 @@ Rank      ResIdx1   ResType1  ResIdx2   ResType2  Contact_Probability
 ...
 ```
 
+### Troubleshooting (MKL and libperl.so)
+On some systems, users may encounter MKL- or `libperl.so`-related errors due to local library and environment differences. We recommend installing PPLM in a fresh conda environment using the provided `environment.yml`:
+```bash
+conda create -n pplm python=3.10
+conda activate pplm
+conda env update -n pplm -f environment.yml
+```
+If MKL errors persist (e.g. import errors for numpy/pytorch), please try reinstalling MKL or recreating the environment:
+```
+conda install mkl
+```
+If you see an error about libperl.so not found when running PPLM-Contact or PPLM-Contact2, first ensure perl is installed and that the library path is visible:
+```
+conda install -c conda-forge perl
+ls $CONDA_PREFIX/lib | grep libperl
+cd $CONDA_PREFIX/lib
+ln -s libperl.so.5.xx libperl.so   # replace with the actual version
+export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:$LD_LIBRARY_PATH"
+```
