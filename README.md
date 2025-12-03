@@ -170,7 +170,7 @@ Rank      ResIdx1   ResType1  ResIdx2   ResType2  Contact_Probability
 ```
 
 ### Troubleshooting (MKL and libperl.so)
-On some systems, users may encounter MKL- or `libperl.so`-related errors due to local library and environment differences. We recommend installing PPLM in a fresh conda environment using the provided `environment.yml`:
+On some systems, users may encounter `MKL`- or `libperl.so`-related errors due to local library and environment differences. We recommend installing PPLM in a fresh conda environment using the provided `environment.yml`:
 ```bash
 conda create -n pplm python=3.10
 conda activate pplm
