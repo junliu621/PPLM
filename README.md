@@ -39,11 +39,11 @@ Liu, Jun, Hungyu Chen, and Yang Zhang. "A Corporative Language Model for Protein
 
 ## Download parameters
 You can download the pre-trained weights for PPLM and its downstream models from the links below and place them in the weights/ directory:<br>
-1. **PPLM**: [pplm_weights](https://1drv.ms/u/c/757b084e424e6c3f/IQD0kNRX71BTSJ6EOdrggxTPAe-LdzSjGaUhXhozy8CZalg?e=jpTD4y)<br>
-2. **PPLM-PPI**: [pplm-ppi_weights](https://1drv.ms/u/c/757b084e424e6c3f/IQABdgnWpB0BTIQiXZecUvYhAerr1glZEZDc5blGnabV5kU?e=X1Pf6M)<br>
+1. **PPLM**: [pplm_weights](https://drive.google.com/file/d/1Xdb3SG0CRY49WqH4jUJhM-yqsLOejz7_/view?usp=share_link)<br>
+2. **PPLM-PPI**: [pplm-ppi_weights](https://drive.google.com/file/d/1QxSFXojCQmLzgrTz398lUEdIZmqVVV9E/view?usp=share_link)<br>
 3. **PPLM-Affinity**: [pplm-affinity_weights](https://drive.google.com/file/d/1teZBp3m_OQ4nciTmiepUDP8p9BXoVEwa/view?usp=drive_link)<br>
-4. **PLM-Contact**: [pplm-contact_weights](https://1drv.ms/u/c/757b084e424e6c3f/IQBW2Dp2AQNUTJHixTulJukoAU6NKjzEM6P64wnVxYQVJ2o?e=ftFZxe)<br>
-5. **PLM-Contact2**: [pplm-contact2_weights](https://1drv.ms/u/c/757b084e424e6c3f/IQD921oea9EXQqi3OdmFC04vAXlG_XSfho5FqupHmiX7nm4?e=jg0xgX)<br>
+4. **PLM-Contact**: [pplm-contact_weights](https://drive.google.com/file/d/1SSEkfyiwtUVO4ZSN10HC5T2v-EGOHXle/view?usp=share_link)<br>
+5. **PLM-Contact2**: [pplm-contact2_weights](https://drive.google.com/file/d/1s99QyTYjngRUUpy8VXJPhTXYHwmw9agp/view?usp=share_link)<br>
 <!--
 After downloading, please move each parameters to the corresponding directory: models/ under pplm/, pplm_ppi/, pplm_affinity/, and pplm_contact/.
 -->
