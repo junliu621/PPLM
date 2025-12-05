@@ -120,7 +120,7 @@ python python run_pplm-ppi.py example/seq1.fasta example/seq2.fasta
 ```
 Predicted interaction score: 0.9431089
 ```
-<---
+<!---
 ```bash
 python run_pplm-ppi.py example/seq_pairs.fasta example/seq_pairs.results
 ```
