@@ -114,6 +114,14 @@ python run_pplm.py example/seq1.fasta example/seq2.fasta example/seq1-seq2.pplm.
 ### PPLM-PPI
 - Command:
 ```bash
+python python run_pplm-ppi.py example/seq1.fasta example/seq2.fasta
+```
+- Output: Predicted interaction probability printed to the command line：
+```
+Predicted interaction score: 0.9431089
+```
+<---
+```bash
 python run_pplm-ppi.py example/seq_pairs.fasta example/seq_pairs.results
 ```
 - Output: The predicted interaction probabilities are saved in example/seq_pairs.results:
@@ -136,6 +144,7 @@ Each entry consists of:
 • Protein Pair: Represented in the format >Protein1:Protein2.
 • Interaction Probability: The likelihood of interaction between the given protein pair.
 ```
+-->
 
 ### PPLM-Affinity
 - Command:
