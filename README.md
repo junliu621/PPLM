@@ -22,7 +22,7 @@ binding affinity, and identifying interface residue contacts, respectively.
 **Webserver**: [PPLM Online Submission](https://zhanggroup.org/PPLM/)  
 -->
 **Citation**:  
-Jun Liu, Hungyu Chen, Yang Zhang. A Paired Sequence Language Model for Protein-Protein Interaction Modeling. Nature Communications (2026). [link]([https://www.biorxiv.org/content/10.1101/2025.07.07.663595v1](https://doi.org/10.1038/s41467-026-70457-5))
+Jun Liu, Hungyu Chen, Yang Zhang. A Paired Sequence Language Model for Protein-Protein Interaction Modeling. Nature Communications (2026). [https://doi.org/10.1038/s41467-026-70457-5](https://doi.org/10.1038/s41467-026-70457-5)
 
 ---
 
