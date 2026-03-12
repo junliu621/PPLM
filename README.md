@@ -1,5 +1,5 @@
 
-# PPLM: A Corporative Language Model for Protein-Protein Interaction, Binding Affinity, and Interface Contact Prediction
+# PPLM: A Paired Sequence Language Model for Protein-Protein Interaction Modeling
 
 ![PPLM Pipeline](Pipeline.png)
 
@@ -8,7 +8,7 @@
 **Version 1.0, 03/25/2025**  
 (Copyrighted by the Regents of the National University of Singapore, All rights reserved)
 
-PPLM is a protein–protein language model that learns directly from paired sequences through a novel
+PPLM is a protein–pair language model that learns directly from paired sequences through a novel
 attention architecture, explicitly capturing inter-protein context. Building on PPLM, we developed
 PPLM-PPI, PPLM-Affinity, and PPLM-Contact for predicting protein–protein interactions, estimating
 binding affinity, and identifying interface residue contacts, respectively.
