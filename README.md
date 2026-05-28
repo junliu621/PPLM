@@ -39,7 +39,7 @@ Jun Liu, Hungyu Chen, Yang Zhang. A Paired Sequence Language Model for Protein-P
 
 ## Download parameters
 You can download the pre-trained weights for PPLM and its downstream models from the links below and place them in the weights/ directory:<br>
-1. **PPLM**: [pplm_weights](https://drive.google.com/file/d/1Xdb3SG0CRY49WqH4jUJhM-yqsLOejz7_/view?usp=share_link)<br>
+1. **PPLM**: [https://zhanggroup.org/PPLM/bin/weights/pplm_t33_650M.pt](https://zhanggroup.org/PPLM/bin/weights/pplm_t33_650M.pt) or [google_drive](https://drive.google.com/file/d/1Xdb3SG0CRY49WqH4jUJhM-yqsLOejz7_/view?usp=share_link)<br>
 2. **PPLM-PPI**: [pplm-ppi_weights](https://drive.google.com/file/d/1QxSFXojCQmLzgrTz398lUEdIZmqVVV9E/view?usp=share_link)<br>
 3. **PPLM-Affinity**: [pplm-affinity_weights](https://drive.google.com/file/d/1teZBp3m_OQ4nciTmiepUDP8p9BXoVEwa/view?usp=drive_link)<br>
 4. **PLM-Contact**: [pplm-contact_weights](https://drive.google.com/file/d/1SSEkfyiwtUVO4ZSN10HC5T2v-EGOHXle/view?usp=share_link)<br>
