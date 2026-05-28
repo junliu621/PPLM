@@ -74,7 +74,11 @@ conda env create -f environment.yml
 ```bash
 conda activate PPLM
 ```
-### 3. Run PPLM-PPI
+### 3. Download weights
+```bash
+cd weights && bash download_weights.sh
+```
+### 4.1. Run PPLM-PPI
 ```bash
 python run_pplm-ppi.py example/seq1.fasta example/seq2.fasta
 ```
@@ -82,11 +86,11 @@ You can also run PPLM-PPI for two individual sequences:
 ```bash
 python pplm_ppi/predict.py example/seq1.fasta example/seq2.fasta
 ```
-### 4. Run PPLM-Affinity
+### 4.1. Run PPLM-Affinity
 ```bash
 python run_pplm-affinity.py example/receptor.fasta example/ligand.fasta
 ```
-### 5. Run PPLM-Contact
+### 4.3.1. Run PPLM-Contact
 For homodimer
 ```bash
 python run_pplm-contact.py example/protein.pdb example/protein.pdb example/homo_example
@@ -95,7 +99,7 @@ For heterodimer
 ```bash
 python run_pplm-contact.py example/protein1.pdb example/protein2.pdb example/hetero_example
 ```
-### 6. Run PPLM-Contact2
+### 4.3.2. Run PPLM-Contact2
 For homodimer
 ```bash
 python run_pplm-contact2.py example/homodimer.afm.pdb example/homodimer.af3.pdb example/homodimer.dmf.pdb example/homo_example2
@@ -104,7 +108,7 @@ For heterodimer
 ```bash
 python run_pplm-contact2.py example/heterodimer.afm.pdb example/heterodimer.af3.pdb example/heterodimer.dmf.pdb example/hetero_example2
 ```
-### 7. Generate embeddings and attention matrices for other applications
+### 4.4. Generate embeddings and attention matrices for other applications
 ```bash
 python run_pplm.py example/seq1.fasta example/seq2.fasta example/seq1-seq2.pplm.pkl
 ```
