@@ -38,9 +38,9 @@ else
 fi
 
 echo "========== Download PPLM-Contact2 weights =========="
-if wget --spider -q "https://zhanggroup.org/PPLM/bin/weights/pplm_contact_models2.pkl"; then
+if wget --spider -q "https://zhanggroup.org/PPLM/bin/weights/pplm_contact2_models.pkl"; then
     echo "   File found on zhanggroup.org. Downloading with wget..."
-    wget "https://zhanggroup.org/PPLM/bin/weights/pplm_contact_models2.pkl"
+    wget "https://zhanggroup.org/PPLM/bin/weights/pplm_contact2_models.pkl"
 else
     echo "   File not accessible on zhanggroup.org. Downloading from Google Drive..."
     gdown --fuzzy "https://drive.google.com/file/d/1SSEkfyiwtUVO4ZSN10HC5T2v-EGOHXle/view?usp=share_link"
