@@ -18,9 +18,9 @@ binding affinity, and identifying interface residue contacts, respectively.
 **Contact**: junl_sg@nus.edu.sg
 
 **License**: PolyForm Noncommercial License
-<!--
+
 **Webserver**: [PPLM Online Submission](https://zhanggroup.org/PPLM/)  
--->
+
 **Citation**:  
 Jun Liu, Hungyu Chen, Yang Zhang. A Paired Sequence Language Model for Protein-Protein Interaction Modeling. Nature Communications (2026). [https://doi.org/10.1038/s41467-026-70457-5](https://doi.org/10.1038/s41467-026-70457-5)
 
