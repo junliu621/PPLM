@@ -41,7 +41,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 source ~/.bashrc
 ```
 
-# 2. Download PPLM
+### 2. Download PPLM
 
 Clone the repository using Git:
 ```bash
@@ -50,14 +50,14 @@ cd PPLM
 ```
 Alternatively, download the repository as a ZIP file from GitHub and extract it.
 
-# 3. Create and Activate the PPLM Environment
+### 3. Create and Activate the PPLM Environment
 Make sure that you are inside the PPLM directory, then run:
 ```bash
 conda env create -f environment.yml
 conda activate PPLM
 ```
 
-# 4. Download Model Weights
+### 4. Download Model Weights
 ```bash
 cd weights
 bash download_weights.sh
@@ -65,8 +65,7 @@ cd ..
 ```
 After downloading, the model files should be located in the `weights` directory.
 
-# Optional Installation for PPLM-Contact
-
+### Optional Installation for PPLM-Contact
 The following external programs and databases are required only for **PPLM-Contact**. They are not required for PPLM-PPI, PPLM-Affinity, or basic PPLM feature generation. All paths below should be configured in "pplm_contact/config.py".
 1. **HH-suite3** for MSA Search: Install [HH-suite3](https://github.com/soedinglab/hh-suite) and update the "hhsuite_dir" parameter in the "pplm_contact/config.py" file.
 2. **Uniclust Database**: Download the [Uniclust30 database](http://wwwuser.gwdg.de/~compbiol/uniclust/2021_03/), unzip it on your machine, and update the "UniRef_database" parameter in the "pplm_contact/config.py" file.
