@@ -26,6 +26,91 @@ Jun Liu, Hungyu Chen, Yang Zhang. A Paired Sequence Language Model for Protein-P
 
 ---
 
+## Installation 
+
+The following instructions are intended for Linux systems. Run the commands one by one in a terminal.
+
+> **Note:** Users who only need **PPLM-PPI**, **PPLM-Affinity**, or PPLM embeddings can skip the entire **Optional Installation for PPLM-Contact** section.
+
+---
+
+## 1. Install Miniconda
+
+Download and install Miniconda:
+
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+source ~/.bashrc
+```
+
+During installation, follow the on-screen instructions and select `yes` when asked whether Conda should be initialized.
+
+Check whether Conda was installed successfully:
+
+```bash
+conda --version
+```
+
+A Conda version number should be displayed.
+
+---
+
+## 2. Download PPLM
+
+Clone the repository using Git:
+
+```bash
+git clone https://github.com/junliu621/PPLM.git
+cd PPLM
+```
+
+Alternatively, download the repository as a ZIP file from GitHub, unzip it, open a terminal in the extracted folder, and enter:
+
+```bash
+cd PPLM
+```
+
+---
+
+## 3. Create and Activate the PPLM Environment
+
+Make sure that you are inside the PPLM directory, then run:
+
+```bash
+conda env create -f environment.yml
+conda activate PPLM
+```
+
+---
+
+## 4. Download Model Weights
+
+From the PPLM directory, run:
+
+```bash
+cd weights
+bash download_weights.sh
+cd ..
+```
+
+After downloading, the model files should be located in the `weights` directory.
+
+---
+
+## Optional Installation for PPLM-Contact
+
+The following external programs and databases are required only for **PPLM-Contact**. They are not required for PPLM-PPI, PPLM-Affinity, or basic PPLM feature generation. All paths below should be configured in "pplm_contact/config.py".
+1. **HH-suite3** for MSA Search: Install [HH-suite3](https://github.com/soedinglab/hh-suite) and update the "hhsuite_dir" parameter in the "pplm_contact/config.py" file.
+2. **Uniclust Database**: Download the [Uniclust30 database](http://wwwuser.gwdg.de/~compbiol/uniclust/2021_03/), unzip it on your machine, and update the "UniRef_database" parameter in the "pplm_contact/config.py" file.
+3. **CCMpred** for DCA: Install [ccmpred](https://github.com/soedinglab/CCMpred), or use the pre-packaged version in the "pplm_contact/external_tools" directory. Set the "ccmpred" parameter in the "pplm_contact/config.py" file. You may need to grant permission by running 'chmod +x pplm_contact/external_tools/ccmpred'.
+4. **LoadHHM** for PSSM Calculation: Download [LoadHHM.py](https://github.com/j3xugit/RaptorX-Contact/blob/master/Common/LoadHHM.py) and place the file in the "pplm_contact" directory of the PPLM package, or use the pre-packaged version within the "pplm_contact" directory.
+5. **ESM-MSA** for Feature Generation: Install the [ESM package](https://github.com/facebookresearch/esm), or use the pre-packaged version within "pplm_contact/external_tools" directory. Download the pre-trained [ESM-MSA model](https://dl.fbaipublicfiles.com/fair-esm/models/esm_msa1_t12_100M_UR50S.pt) and set the "esm_msa_model" parameter in the "pplm_contact/config.py" file. 
+
+
+
+
+##
 ## System Requirements
 - x86_64 machine
 - Linux Kernel OS
@@ -50,7 +135,14 @@ You can download the pre-trained weights for PPLM and its downstream models from
 
 ### 1. Install environment
 ```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+source ~/.bashrc
+
+git clone https://github.com/junliu621/PPLM.git
+cd PPLM
 conda env create -f environment.yml
+conda activate PPLM
 ```
 ### 2. Activate environment
 ```bash
