@@ -76,7 +76,7 @@ The following external programs and databases are required only for **PPLM-Conta
 
 ## Usage
 
-### 0. Activate environment
+### Activate environment
 ```bash
 conda activate PPLM
 ```
@@ -84,10 +84,6 @@ conda activate PPLM
 ### 1. Run PPLM-PPI
 ```bash
 python run_pplm-ppi.py example/seq1.fasta example/seq2.fasta
-```
-You can also run PPLM-PPI for two individual sequences:
-```bash
-python pplm_ppi/predict.py example/seq1.fasta example/seq2.fasta
 ```
 
 ### 2. Run PPLM-Affinity
