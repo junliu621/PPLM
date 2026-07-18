@@ -32,7 +32,7 @@ The following instructions are intended for Linux systems. Run the commands one 
 
 > **Note:** Users who only need **PPLM-PPI**, **PPLM-Affinity**, or PPLM embeddings can skip the entire **Optional Installation for PPLM-Contact** section.
 
-# 1. Install Miniconda
+### 1. Install Miniconda
 
 Download and install Miniconda:
 ```bash
