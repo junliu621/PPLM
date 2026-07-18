@@ -32,73 +32,40 @@ The following instructions are intended for Linux systems. Run the commands one 
 
 > **Note:** Users who only need **PPLM-PPI**, **PPLM-Affinity**, or PPLM embeddings can skip the entire **Optional Installation for PPLM-Contact** section.
 
----
-
-## 1. Install Miniconda
+# 1. Install Miniconda
 
 Download and install Miniconda:
-
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 source ~/.bashrc
 ```
 
-During installation, follow the on-screen instructions and select `yes` when asked whether Conda should be initialized.
-
-Check whether Conda was installed successfully:
-
-```bash
-conda --version
-```
-
-A Conda version number should be displayed.
-
----
-
-## 2. Download PPLM
+# 2. Download PPLM
 
 Clone the repository using Git:
-
 ```bash
 git clone https://github.com/junliu621/PPLM.git
 cd PPLM
 ```
+Alternatively, download the repository as a ZIP file from GitHub and extract it.
 
-Alternatively, download the repository as a ZIP file from GitHub, unzip it, open a terminal in the extracted folder, and enter:
-
-```bash
-cd PPLM
-```
-
----
-
-## 3. Create and Activate the PPLM Environment
-
+# 3. Create and Activate the PPLM Environment
 Make sure that you are inside the PPLM directory, then run:
-
 ```bash
 conda env create -f environment.yml
 conda activate PPLM
 ```
 
----
-
-## 4. Download Model Weights
-
-From the PPLM directory, run:
-
+# 4. Download Model Weights
 ```bash
 cd weights
 bash download_weights.sh
 cd ..
 ```
-
 After downloading, the model files should be located in the `weights` directory.
 
----
-
-## Optional Installation for PPLM-Contact
+# Optional Installation for PPLM-Contact
 
 The following external programs and databases are required only for **PPLM-Contact**. They are not required for PPLM-PPI, PPLM-Affinity, or basic PPLM feature generation. All paths below should be configured in "pplm_contact/config.py".
 1. **HH-suite3** for MSA Search: Install [HH-suite3](https://github.com/soedinglab/hh-suite) and update the "hhsuite_dir" parameter in the "pplm_contact/config.py" file.
